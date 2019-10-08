@@ -3,7 +3,7 @@ pipeline {
          stages {
                  stage('One') {
                  steps {
-                     echo 'Hi, this is Zulaikha from edureka'
+                     echo 'Hi, this is Md. Ruhul Amin Sujon'
                  }
                  }
                  stage('Two') {
@@ -18,7 +18,7 @@ pipeline {
                        }
                  }
                  steps {
-                       echo "Hello"
+                       echo "Hello boss"
                  }
                  }
                  stage('Four') {
@@ -26,6 +26,7 @@ pipeline {
                             stage('Unit Test') {
                            steps {
                                 echo "Running the unit test..."
+                                sh 'python --version'
                            }
                            }
                             stage('Integration test') {
