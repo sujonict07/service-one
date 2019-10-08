@@ -9,5 +9,6 @@ class TestBasic(unittest.TestCase):
         self.reverse_string = self.input_string[::-1]
 
     def test_reverse_string(self):
-        reverse_string = string_reverser(self.input_string)
+        payload = {"message": self.input_string}
+        reverse_string = string_reverser(payload)
         self.assertEqual(self.reverse_string, reverse_string)

@@ -9,5 +9,5 @@ class TestBasic(unittest.TestCase):
         self.random_number = random.random()
 
     def test_random_number_generator(self):
-        random_number = random_number_generator(10, chars='123')
+        random_number = random_number_generator()
         self.assertNotEqual(self.random_number, random_number)

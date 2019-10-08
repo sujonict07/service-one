@@ -1,23 +1,29 @@
+import requests
 import random
-import string
+from rest_framework import status
+from micro_service_one.settings import MICRO_SERVICE_URL
+from commons.utils import get_logger
+
+logger = get_logger()
 
 
-def string_reverser(input_string):
+
+def string_reverser(payload):
     """
-    Reverse all input string
-    :param input_string:
-    :return: reversed data
-    """
-    reverse_string = input_string[::-1]
-    return reverse_string
-
-
-def random_number_generator(size=10, chars=string.ascii_uppercase + string.digits):
-    """
-    Random number generator.
-    :param size:
-    :param chars:
+    Get response from micro-service two
+    :param payload:
     :return:
     """
-    random_number = ''.join(random.choice(chars) for _ in range(size))
+    url = MICRO_SERVICE_URL + '/reverse'
+    response = requests.post(url, payload)
+    if response.status_code == status.HTTP_201_CREATED:
+        logger.info("Auth user deleted")
+        return response.json().get("message")
+    else:
+        logger.error("Auth user not deleted")
+        return False
+
+
+def random_number_generator():
+    random_number = random.random()
     return random_number
